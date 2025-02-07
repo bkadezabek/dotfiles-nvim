@@ -180,10 +180,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- NOTE: Load cusotom commands here:
+-- NOTE: Load cusotom commands and plugins here:
 -- It starts working here. Don't know why...
 require 'custom.bkadezabek_custom_commands'
 require 'custom.bkadezabek_keymap_config'
+require 'custom.plugins.jesseduffield'
 -- require 'kickstart.plugins.debug'
 
 -- TIP: Disable arrow keys in normal mode
@@ -226,26 +227,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
-
--- Listen for Godot Projects on start
--- local gdproject = io.open(vim.fn.getcwd() .. '/project.godot', 'r')
--- if gdproject then
---   io.close(gdproject)
---   vim.fn.serverstart './tmp/godot.pipe'
--- end
--- vim.api.nvim_create_autocmd('VimEnter', {
---   pattern = '*',
---   callback = function()
---     -- Check if `project.godot` exists in the current working directory
---     local project_file = vim.fn.getcwd() .. '/project.godot'
---     if vim.fn.filereadable(project_file) == 1 then
---       -- Start the Neovim server if it's not already running
---       if vim.fn.getenv 'NVIM_LISTEN_ADDRESS' == nil then
---         vim.fn.setenv('NVIM_LISTEN_ADDRESS', '/tmp/godot.pipe')
---       end
---     end
---   end,
--- })
 
 -- [[ Configure and install plugins ]]
 --
@@ -304,15 +285,16 @@ require('lazy').setup({
   --
   -- NOTE: MY CUSTOM PLUGINS
   { 'habamax/vim-godot', event = 'VimEnter' },
-  {
-    'kdheepak/lazygit.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
-    end,
-  },
+  require 'custom.plugins.jesseduffield',
+  -- {
+  --   'kdheepak/lazygit.nvim',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --   },
+  --   config = function()
+  --     vim.api.nvim_set_keymap('n', '<leader>lg', ':LazyGit<CR>', { noremap = true, silent = true })
+  --   end,
+  -- },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional for icons
