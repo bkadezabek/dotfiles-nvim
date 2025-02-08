@@ -180,8 +180,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- NOTE: Load cusotom commands and plugins here:
---       It starts working here. Don't know why...
+-- NOTE: Load custom commands and plugins here: It starts working here. Don't know why...
+
+-- Custom commands
 require 'custom.bkadezabek_custom_commands'
 -- require 'kickstart.plugins.debug'
 
@@ -794,7 +795,6 @@ require('lazy').setup({
       --
       -- local luasnip = require 'luasnip'
       -- luasnip.config.setup {}
-      --
       cmp.setup {
         snippet = {
           expand = function()
@@ -868,42 +868,6 @@ require('lazy').setup({
     end,
   },
 
-  { -- You can easily change to a different colorscheme.
-    -- Change the name of the colorscheme plugin below, and then
-    -- change the command in the config to whatever the name of that colorscheme is.
-    --
-    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      -- Load the colorscheme here.
-      -- Like many other themes, this one has different styles, and you could load
-      -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      --
-      -- vim.cmd.colorscheme 'tokyonight-night'
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
-    end,
-  },
-  {
-    'olimorris/onedarkpro.nvim',
-    priority = 1000, -- Ensure it loads first
-    config = function()
-      require('onedarkpro').setup {
-        colors = {
-          onedark_dark = { bg = '#14171f' },
-        },
-        options = {
-          cursorline = true,
-        },
-      }
-      vim.cmd.colorscheme 'onedark_dark'
-      vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', { fg = '#EE3B45', bg = '#2F1F2B' })
-      vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextWarn', { fg = '#E9AD5B', bg = '#2E2A2D' })
-      vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextInfo', { fg = '#00BC9B', bg = '#142C33' })
-    end,
-  },
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -944,6 +908,7 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
+
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -997,6 +962,10 @@ require('lazy').setup({
   -- Or use telescope!
   -- In normal mode type `<space>sh` then write `lazy.nvim-plugin`
   -- you can continue same window with `<space>sr` which resumes last telescope search
+  --
+  -- NOTE: Themes & ColorSchemes are loaded here, but are set inside of their config with vim.cmd.colorscheme 'onedark_dark'
+  require 'custom.themes.onedarkpro',
+  require 'custom.themes.tokyonight-nvim',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
