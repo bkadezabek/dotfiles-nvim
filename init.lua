@@ -280,159 +280,19 @@ require('lazy').setup({
   -- Then, because we use the `config` key, the configuration only runs
   -- after the plugin has been loaded:
   --  config = function() ...
-  --
+
   -- NOTE: MY CUSTOM PLUGINS
   { 'habamax/vim-godot', event = 'VimEnter' },
   require 'custom.plugins.jesseduffield',
   require 'custom.plugins.lualine',
   require 'custom.plugins.nvim-web-devicons',
   require 'custom.plugins.coment-nvim',
-  {
-    'folke/trouble.nvim',
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = 'Trouble',
-    keys = {
-      {
-        '<leader>xx',
-        '<cmd>Trouble diagnostics toggle<cr>',
-        desc = 'Diagnostics (Trouble)',
-      },
-      {
-        '<leader>xX',
-        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-        desc = 'Buffer Diagnostics (Trouble)',
-      },
-      {
-        '<leader>cs',
-        '<cmd>Trouble symbols toggle focus=false<cr>',
-        desc = 'Symbols (Trouble)',
-      },
-      {
-        '<leader>cl',
-        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
-        desc = 'LSP Definitions / references / ... (Trouble)',
-      },
-      {
-        '<leader>xL',
-        '<cmd>Trouble loclist toggle<cr>',
-        desc = 'Location List (Trouble)',
-      },
-      {
-        '<leader>xQ',
-        '<cmd>Trouble qflist toggle<cr>',
-        desc = 'Quickfix List (Trouble)',
-      },
-    },
-    -- Navigate up and down across the xx diagnostics menu
-    vim.api.nvim_set_keymap('n', ']x', '<cmd>Trouble diagnostics next<cr>', { silent = true, noremap = true }),
-    vim.api.nvim_set_keymap('n', '[x', '<cmd>Trouble diagnostics prev<cr>', { silent = true, noremap = true }),
-    vim.api.nvim_set_keymap('n', 'đx', '<cmd>Trouble diagnostics next<cr>', { silent = true, noremap = true }),
-    vim.api.nvim_set_keymap('n', 'šx', '<cmd>Trouble diagnostics prev<cr>', { silent = true, noremap = true }),
-  },
-  -- Spectre Search & Replace plugin
-  {
-    'nvim-pack/nvim-spectre',
-    config = function()
-      require('spectre').setup()
-    end,
-    keys = {
-      { '<leader>Ss', "<cmd>lua require('spectre').open()<CR>", desc = 'Open Spectre' },
-      { '<leader>Sw', "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", desc = 'Search Current Word' },
-      { '<leader>Sb', "<cmd>lua require('spectre').open_file_search()<CR>", desc = 'Search in Current File' },
-    },
-  },
-  -- Harpoon plugin
-  {
-    'ThePrimeagen/harpoon',
-    branch = 'harpoon2',
-    opts = {
-      menu = {
-        width = vim.api.nvim_win_get_width(0) - 4,
-      },
-      settings = {
-        save_on_toggle = true,
-      },
-    },
-    keys = function()
-      local keys = {
-        {
-          '<leader>H',
-          function()
-            require('harpoon'):list():add()
-          end,
-          desc = 'Harpoon File',
-        },
-        {
-          '<leader>h',
-          function()
-            local harpoon = require 'harpoon'
-            harpoon.ui:toggle_quick_menu(harpoon:list())
-          end,
-          desc = 'Harpoon Quick Menu',
-        },
-      }
-      for i = 1, 5 do
-        table.insert(keys, {
-          '<leader>' .. i,
-          function()
-            require('harpoon'):list():select(i)
-          end,
-          desc = 'Harpoon to File ' .. i,
-        })
-      end
-      return keys
-    end,
-  },
-  -- Add nvim-tree plugin
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- Optional, for file icons
-    lazy = false, -- Load immediately on startup
-    config = function()
-      require('nvim-tree').setup {
-        -- Custom configuration for nvim-tree
-        view = {
-          width = 35, -- Width of the nvim-tree window
-          side = 'left', -- Open tree on the left
-        },
-        renderer = {
-          icons = {
-            show = {
-              file = true,
-              folder = true,
-              folder_arrow = true,
-              git = true,
-            },
-          },
-        },
-        filters = {
-          dotfiles = false, -- Show hidden (dot) files
-          custom = {
-            -- Godot files ignore
-            '.git',
-            '.github',
-            '.godot',
-            '.vscode',
-            '.cfg',
-            '*.import', -- Ignore Godot import files
-            '.DS_STORE',
-            '.gdignore', -- Ignore Godot ignore files
-            'node_modules', -- Ignore unnecessary folders
-            '*.tmp', -- Ignore temporary files
-            '*.log', -- Ignore log files
-          },
-        },
-        git = {
-          enable = true, -- Show git status icons
-        },
-      }
-      -- Key mapping to toggle nvim-tree
-      vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-      vim.keymap.set('n', '<leader>n', ':NvimTreeFocus<CR>', { noremap = true, silent = true })
-    end,
-  },
+  require 'custom.plugins.trouble-nvim',
+  require 'custom.plugins.spectre',
+  require 'custom.plugins.harpoon',
+  require 'custom.plugins.nvim-tree',
   -- NOTE: END OF CUSTOM PLUGINS
-  --
+
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
@@ -1049,7 +909,7 @@ require('lazy').setup({
         views = {
           cmdline_popup = {
             position = {
-              row = 5,
+              row = '95%',
               col = '50%',
             },
             size = {
@@ -1060,11 +920,11 @@ require('lazy').setup({
           popupmenu = {
             relative = 'editor',
             position = {
-              row = 8,
-              col = '50%',
+              row = 10,
+              col = '20%',
             },
             size = {
-              width = 60,
+              width = 50,
               height = 10,
             },
             border = {
@@ -1238,6 +1098,3 @@ require('lazy').setup({
     },
   },
 })
-
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
