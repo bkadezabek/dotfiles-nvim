@@ -291,6 +291,8 @@ require('lazy').setup({
   require 'custom.plugins.spectre',
   require 'custom.plugins.harpoon',
   require 'custom.plugins.nvim-tree',
+  require 'custom.plugins.noice-nvim',
+  require 'custom.plugins.nvim-notify',
   -- NOTE: END OF CUSTOM PLUGINS
 
   { -- Useful plugin to show you pending keybinds.
@@ -582,7 +584,6 @@ require('lazy').setup({
               group = highlight_augroup,
               callback = vim.lsp.buf.document_highlight,
             })
-
             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -789,9 +790,11 @@ require('lazy').setup({
     config = function()
       -- See `:help cmp`
       local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
-      luasnip.config.setup {}
-
+      -- NOTE: luasinp bothers with <Enter> being a code completion confirmation key
+      --
+      -- local luasnip = require 'luasnip'
+      -- luasnip.config.setup {}
+      --
       cmp.setup {
         snippet = {
           expand = function()
@@ -799,7 +802,7 @@ require('lazy').setup({
             -- luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = 'menu,menuone,noinsert' },
+        completion = { completeopt = 'menu,menuone' },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
@@ -810,11 +813,9 @@ require('lazy').setup({
           ['<Tab>'] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
           ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-
           -- Scroll the documentation window [b]ack / [f]orward
           ['<C-b>'] = cmp.mapping.scroll_docs(-4),
           ['<C-f>'] = cmp.mapping.scroll_docs(4),
-
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
@@ -822,7 +823,7 @@ require('lazy').setup({
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
-          --['<CR>'] = cmp.mapping.confirm { select = true },
+          -- ['<CR>'] = cmp.mapping.confirm { select = true },
           --['<Tab>'] = cmp.mapping.select_next_item(),
           --['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
@@ -839,16 +840,16 @@ require('lazy').setup({
           --
           -- <c-l> will move you to the right of each of the expansion locations.
           -- <c-h> is similar, except moving you backwards.
-          ['<C-l>'] = cmp.mapping(function()
-            if luasnip.expand_or_locally_jumpable() then
-              luasnip.expand_or_jump()
-            end
-          end, { 'i', 's' }),
-          ['<C-h>'] = cmp.mapping(function()
-            if luasnip.locally_jumpable(-1) then
-              luasnip.jump(-1)
-            end
-          end, { 'i', 's' }),
+          -- ['<C-l>'] = cmp.mapping(function()
+          --   if luasnip.expand_or_locally_jumpable() then
+          --     luasnip.expand_or_jump()
+          --   end
+          -- end, { 'i', 's' }),
+          -- ['<C-h>'] = cmp.mapping(function()
+          --   if luasnip.locally_jumpable(-1) then
+          --     luasnip.jump(-1)
+          --   end
+          -- end, { 'i', 's' }),
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -865,87 +866,6 @@ require('lazy').setup({
         },
       }
     end,
-  },
-  {
-    'rcarriga/nvim-notify',
-    config = function()
-      -- Set nvim-notify as the default notification handler
-      vim.notify = require 'notify'
-
-      -- Configure nvim-notify
-      require('notify').setup {
-        stages = 'fade', -- Animation stages: fade, slide, or static
-        timeout = 2000, -- Duration in ms before notification disappears
-        level = vim.log.levels.INFO, -- Minimum log level for notifications
-        background_colour = '#000000', -- Background color
-        fps = 60, -- Frames per second for animations
-        render = 'compact', -- Render style: "default", "minimal", etc.
-        minimum_width = 40, -- Minimum width of notification windows
-        max_width = 80, -- Maximum width of the notification window
-        max_height = 10, -- Maximum height of the notification window
-        top_down = true, -- Render notifications from top down
-        on_open = function() end, -- Empty function for `on_open`
-        on_close = function() end, -- Empty function for `on_close`
-        icons = {
-          ERROR = '',
-          WARN = '',
-          INFO = '',
-          DEBUG = '',
-          TRACE = '✎',
-        },
-        time_formats = { -- Custom time format settings
-          '%H:%M:%S', -- Default time format
-        },
-      }
-      require('notify').history()
-    end,
-  },
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    opts = {},
-    config = function()
-      require('noice').setup {
-        views = {
-          cmdline_popup = {
-            position = {
-              row = '95%',
-              col = '50%',
-            },
-            size = {
-              width = 60,
-              height = 'auto',
-            },
-          },
-          popupmenu = {
-            relative = 'editor',
-            position = {
-              row = 10,
-              col = '20%',
-            },
-            size = {
-              width = 50,
-              height = 10,
-            },
-            border = {
-              style = 'rounded',
-              padding = { 0, 1 },
-            },
-            win_options = {
-              winhighlight = { Normal = 'Normal', FloatBorder = 'DiagnosticInfo' },
-            },
-          },
-        },
-      }
-    end,
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-      -- 'rcarriga/nvim-notify',
-    },
   },
 
   { -- You can easily change to a different colorscheme.
