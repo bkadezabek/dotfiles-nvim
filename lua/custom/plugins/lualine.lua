@@ -38,10 +38,10 @@ return {
                   counts.info = counts.info + 1
                 end
               end
-              local error_icon = '' -- NF icon for error
-              local warning_icon = '' -- NF icon for warning
+              local error_icon = '' -- NF icon for error
+              local warning_icon = '' -- NF icon for warning
               -- local hint_icon = '' -- NF icon for hint
-              local info_icon = '' -- NF icon for info
+              local info_icon = '' -- NF icon for info
               -- Format the filename with diagnostics
               return string.format('%s %d %s %d %s %d', error_icon, counts.errors, warning_icon, counts.warnings, info_icon, counts.info)
             end,
