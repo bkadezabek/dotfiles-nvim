@@ -4,6 +4,52 @@ return {
   opts = {},
   config = function()
     require('noice').setup {
+      cmdline = {
+        enabled = true,
+      },
+      messages = {
+        enabled = true,
+      },
+      popupmenu = {
+        enabled = true,
+      },
+      redirect = {
+        enabled = true,
+      },
+      commands = {
+        enabled = true,
+      },
+      notify = {
+        enabled = true,
+      },
+      lsp = {
+        progress = { enabled = true },
+        hover = { enabled = true },
+        signature = { enabled = true },
+        message = { enabled = true },
+        documentation = { enabled = true },
+      },
+      markdown = {
+        hover = { enabled = true },
+        highlights = { enabled = true },
+      },
+      health = {
+        enabled = true,
+      },
+      presets = {
+        bottom_search = false,
+        command_palette = false,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = false,
+      },
+      throttle = 100,
+      routes = {},
+      status = {},
+      format = {},
+      debug = false,
+      log = { enabled = false, max_size = 1000 },
+      log_max_size = 1000,
       views = {
         cmdline_popup = {
           position = {
@@ -18,11 +64,11 @@ return {
         popupmenu = {
           relative = 'editor',
           position = {
-            row = 10,
-            col = '20%',
+            row = '90%',
+            col = '50%',
           },
           size = {
-            width = 50,
+            width = 55,
             height = 10,
           },
           border = {
