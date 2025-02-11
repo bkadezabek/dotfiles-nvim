@@ -7,8 +7,8 @@ return {
         icons_enabled = true,
         globalstatus = true,
         disabled_filetypes = {
-          winbar = { 'NvimTree' },
-          statusline = { 'NvimTree' },
+          winbar = {},
+          statusline = {},
         },
       },
       sections = {
