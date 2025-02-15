@@ -284,6 +284,7 @@ require('lazy').setup({
 
   -- NOTE: MY CUSTOM PLUGINS
   { 'habamax/vim-godot', event = 'VimEnter' },
+  require 'custom.plugins.dashboard-nvim',
   require 'custom.plugins.jesseduffield',
   require 'custom.plugins.lualine',
   require 'custom.plugins.nvim-web-devicons',
