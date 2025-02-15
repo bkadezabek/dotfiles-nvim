@@ -120,3 +120,8 @@
 -- a - Add file
 -- r - Rename file
 -- f - Filter files
+-- NOTE: mini.files:
+-- <leader>E - Toggle directory tree
+--    left/SEnter - Move Left in the tree
+--    right/Enter - Move right/open file or directory
+--    q - Quit
