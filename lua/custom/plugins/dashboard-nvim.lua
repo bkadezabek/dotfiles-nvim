@@ -4,14 +4,14 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     -- Define custom highlight groups based on extracted colors
-    vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#D55FDF' }) -- Gold header
-    vim.api.nvim_set_hl(0, 'DashboardTop1', { fg = '#62AFEF' }) -- Gold header
-    vim.api.nvim_set_hl(0, 'DashboardTop2', { fg = '#D19A66' }) -- Gold header
-    vim.api.nvim_set_hl(0, 'DashboardTop3', { fg = '#EF5970' }) -- Gold header
-    vim.api.nvim_set_hl(0, 'DashboardTop4', { fg = '#89CA79' }) -- Gold header
-    vim.api.nvim_set_hl(0, 'DashboardTop5', { fg = '#2BBAC5' }) -- Gold header
-    vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#00BFFF' }) -- DeepSkyBlue shortcuts
-    vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#89CA79' }) -- LawnGreen footer
+    vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#62AFEF' })
+    vim.api.nvim_set_hl(0, 'DashboardTop1', { fg = '#D55FDF' })
+    vim.api.nvim_set_hl(0, 'DashboardTop2', { fg = '#D19A66' })
+    vim.api.nvim_set_hl(0, 'DashboardTop3', { fg = '#EF5970' })
+    vim.api.nvim_set_hl(0, 'DashboardTop4', { fg = '#89CA79' })
+    vim.api.nvim_set_hl(0, 'DashboardTop5', { fg = '#2BBAC5' })
+    vim.api.nvim_set_hl(0, 'DashboardShortcut', { fg = '#62AFEF' })
+    vim.api.nvim_set_hl(0, 'DashboardFooter', { fg = '#89CA79' })
 
     -- Setup dashboard with the themed highlights
     require('dashboard').setup {
