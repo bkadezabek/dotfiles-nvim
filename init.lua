@@ -295,6 +295,7 @@ require('lazy').setup({
   require 'custom.plugins.noice-nvim',
   require 'custom.plugins.nvim-notify',
   require 'custom.plugins.mini-nvim',
+  require 'custom.plugins.nvim-colorizer',
   -- NOTE: END OF CUSTOM PLUGINS
 
   { -- Useful plugin to show you pending keybinds.
