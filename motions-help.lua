@@ -115,7 +115,7 @@
 --    ]x - Next item in diagnostics menu
 --
 --
--- NOTE:nvim-tree:
+-- NOTE: nvim-tree:
 -- <leader>e - Toggle project window
 -- a - Add file
 -- r - Rename file
@@ -125,3 +125,11 @@
 --    left/SEnter - Move Left in the tree
 --    right/Enter - Move right/open file or directory
 --    q - Quit
+--
+-- NOTE: neoclip:
+-- <leader>sc - Open Telescope neoclip
+--    select = '<cr>',
+--    paste = '<c-p>',
+--    paste_behind = '<c-k>',
+--    replay = '<c-q>', -- replay a macro
+--    delete = '<c-d>', -- delete an entry
