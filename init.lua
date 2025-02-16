@@ -298,6 +298,7 @@ require('lazy').setup({
   require 'custom.plugins.mini-nvim',
   require 'custom.plugins.nvim-colorizer',
   require 'custom.plugins.neoclip',
+  require 'custom.plugins.transparent-nvim',
   -- NOTE: END OF CUSTOM PLUGINS
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
