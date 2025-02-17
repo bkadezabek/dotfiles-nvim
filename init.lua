@@ -299,6 +299,7 @@ require('lazy').setup({
   require 'custom.plugins.nvim-colorizer',
   require 'custom.plugins.neoclip',
   require 'custom.plugins.transparent-nvim',
+  require 'custom.plugins.flash-nvim',
   -- NOTE: END OF CUSTOM PLUGINS
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
@@ -609,7 +610,7 @@ require('lazy').setup({
           --
           -- This may be unwanted, since they displace some of your code
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-            map('<leader>th', function()
+            map('<leader>tH', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end

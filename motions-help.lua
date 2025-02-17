@@ -70,6 +70,7 @@
 --    <C-q> - Add result to quickfix list
 -- REGEX:
 --    ^ - Line starts with - ^var
+-- <leader><leader> - Move across currently open buffers
 --
 --
 -- NOTE: Window movement
@@ -122,14 +123,20 @@
 -- f - Filter files
 -- NOTE: mini.files:
 -- <leader>E - Toggle directory tree
---    left/SEnter - Move Left in the tree
+--    left/s-Enter - Move Left in the tree
 --    right/Enter - Move right/open file or directory
 --    q - Quit
 --
 -- NOTE: neoclip:
 -- <leader>sc - Open Telescope neoclip
 --    select = '<cr>',
---    paste = '<c-p>',
+--    paste = 'p',
 --    paste_behind = '<c-k>',
 --    replay = '<c-q>', -- replay a macro
 --    delete = '<c-d>', -- delete an entry
+--
+-- NOTE: flash-nvim:
+-- <c-/> - Search wih jumps in current buffer
+-- <leader>sv - Search what block to highlight from treesitter
+-- <leader>sV - What block to jump to and highlight it. Can highlight rows (also jump points). Expects characters as inputs
+-- <c-s> - Only in Command mode. Toggle to use flash with /. If you <CR> then it is a normal local buffer search [C]
