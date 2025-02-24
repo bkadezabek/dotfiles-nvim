@@ -183,7 +183,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 -- NOTE: Load custom commands and plugins here: It starts working here. Don't know why...
 
 -- Custom commands
-require 'custom.bkadezabek_custom_commands'
+require 'custom.custom_commands'
 -- require 'kickstart.plugins.debug'
 
 -- TIP: Disable arrow keys in normal mode
@@ -300,6 +300,7 @@ require('lazy').setup({
   require 'custom.plugins.neoclip',
   require 'custom.plugins.transparent-nvim',
   require 'custom.plugins.flash-nvim',
+  require 'custom.plugins.fterm',
   -- NOTE: END OF CUSTOM PLUGINS
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',

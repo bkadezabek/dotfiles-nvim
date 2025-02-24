@@ -21,6 +21,6 @@ return {
     { "<leader>sV", mode = {"n", "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     -- Toggle Flash Search is within the command mode indicated by "c" mode. 
     -- Shows flash within the search / with the jump labels. needs to be toggled!
-    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search inside of /" },
   },
 }

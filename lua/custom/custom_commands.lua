@@ -13,6 +13,8 @@ vim.api.nvim_set_keymap('n', '<C-u>', '15k', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>to', ':term <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tv', ':vsplit | term <CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>th', ':split | term <CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tf', '<CMD>lua require("FTerm").toggle()<CR>', { noremap = true, silent = true })
+
 -- Map <leader>tsq to close all terminal windows
 --vim.api.nvim_set_keymap('n', '<leader>taq', ':luaclose_all_terminals()<CR>', { noremap = true, silent = true })
 
