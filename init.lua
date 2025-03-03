@@ -301,6 +301,7 @@ require('lazy').setup({
   require 'custom.plugins.transparent-nvim',
   require 'custom.plugins.flash-nvim',
   require 'custom.plugins.fterm',
+  require 'custom.plugins.markdown-preview',
   -- NOTE: END OF CUSTOM PLUGINS
   { -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',

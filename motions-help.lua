@@ -20,6 +20,7 @@
 -- yy - Copy entire line
 -- s - Delete under cursor and enter insert mode [I]
 -- p - Paste bellow current line
+-- O - Insert line above and enter [I]
 -- o - Insert line bellow current and enter [I]
 -- v - Visual Mode select screen [V]
 --    % - {}, [], ()
@@ -121,11 +122,15 @@
 -- a - Add file
 -- r - Rename file
 -- f - Filter files
+-- E - Expand all directories
+--
+--
 -- NOTE: mini.files:
 -- <leader>E - Toggle directory tree
 --    left/s-Enter - Move Left in the tree
 --    right/Enter - Move right/open file or directory
 --    q - Quit
+--
 --
 -- NOTE: neoclip:
 -- <leader>sc - Open Telescope neoclip
@@ -135,8 +140,14 @@
 --    replay = '<c-q>', -- replay a macro
 --    delete = '<c-d>', -- delete an entry
 --
+--
 -- NOTE: flash-nvim:
 -- <c-/> - Search wih jumps in current buffer
 -- <leader>sv - Search what block to highlight from treesitter
 -- <leader>sV - What block to jump to and highlight it. Can highlight rows (also jump points). Expects characters as inputs
 -- <c-s> - Only in Command mode. Toggle to use flash with /. If you <CR> then it is a normal local buffer search [C]
+--
+--
+-- NOTE: notify-nvim:
+-- <leader>ms - List all notifications
+-- <leader>md - Dismiss notifications
