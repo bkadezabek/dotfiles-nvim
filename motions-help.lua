@@ -132,6 +132,14 @@
 --    q - Quit
 --
 --
+-- NOTE: nvim-surround:
+-- <ANY VISUAL SELECTION> S["('[{] - Add any character to start and end of selection
+-- ys$"      - "make strings" - Entire line if it starts with 0
+-- ds]       - delete around me!
+-- cs'"      - "change quotes"
+-- ysiw)     - (surround_words)
+--
+--
 -- NOTE: neoclip:
 -- <leader>sc - Open Telescope neoclip
 --    select = '<cr>',
