@@ -44,7 +44,12 @@ return {
         lsp_doc_border = false,
       },
       throttle = 100,
-      routes = {},
+      routes = {
+        {
+          view = 'notify',
+          filter = { event = 'msg_showmode' },
+        },
+      },
       status = {},
       format = {},
       debug = false,

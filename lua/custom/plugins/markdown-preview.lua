@@ -10,6 +10,6 @@ return {
   end,
   config = function()
     -- Set a custom CSS file for MarkdownPreview styling
-    vim.g.mkdp_highlight_css = vim.fn.expand '~/.config/nvim/lua/custom/themes/custom-markdown.css'
+    -- vim.g.mkdp_highlight_css = vim.fn.expand '~/.config/nvim/lua/custom/themes/custom-markdown.css'
   end,
 }

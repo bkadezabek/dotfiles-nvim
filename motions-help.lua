@@ -11,6 +11,8 @@
 -- [numb]g/h/j/k - Move relative to line number
 -- <C-d> - Move down 15 steps - keymap_config.lua
 -- <C-u> - Move up 15 steps - keymap_config.lua
+-- f<char> - f finds the instances of <char> after the cursor.
+--    f and s-f jumps back and forward through the query
 --
 --
 -- NOTE: Text edit [N]
@@ -67,6 +69,7 @@
 -- <leader> sg - Live grep accross all files
 -- <leader> sb - Search current buffer
 -- <leader> / - Search current buffer (Different screen menu)
+-- Shift + - Search for the current word under the cursor
 -- Inside of Telescope:
 --    <C-q> - Add result to quickfix list
 -- REGEX:

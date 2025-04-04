@@ -307,6 +307,8 @@ require('lazy').setup({
   require 'custom.plugins.nvim-surround',
   require 'custom.plugins.vimtex',
   require 'custom.plugins.which-key',
+  require 'custom.plugins.undotree',
+
   -- NOTE: END OF CUSTOM PLUGINS
   -- NOTE: Plugins can specify dependencies.
   --
